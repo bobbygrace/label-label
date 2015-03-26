@@ -11,16 +11,13 @@ template = renderable ->
   p 'Made by Bobby.'
 
 class LandingView extends Backbone.View
-  initialize: ({@gameData}) ->
-    super
-
   render: ->
     @$el.append template()
     @fillGameView()
     @
 
   fillGameView: ->
-    gameView = new GameIntroView({ @gameData })
+    gameView = new GameIntroView({ @model })
     gameView.render()
     @$('.js-game-view').html gameView.el
     return

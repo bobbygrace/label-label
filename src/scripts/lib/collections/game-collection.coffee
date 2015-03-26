@@ -1,15 +1,13 @@
+Backbone = require 'backbone'
+GameModel = require '../models/game-model.coffee'
 LabelCollection = require '../collections/label-collection.coffee'
 WordCollection = require '../collections/word-collection.coffee'
 PairCollection = require '../collections/pair-collection.coffee'
-_ = require 'underscore'
 
-class GameData
-  constructor: ->
-    @gameList = []
-    @addNewGame()
-    return
+class GameCollection extends Backbone.Collection
+  model: GameModel
 
-  addNewGame: ->
+  startGame: ->
     labelCollection = new LabelCollection()
     wordCollection = new WordCollection()
     pairCollection = new PairCollection()
@@ -20,15 +18,10 @@ class GameData
       { name: "Internet Café" }
     ])
 
-    newGame = {
-      labelCollection
-      wordCollection
-      pairCollection
+    @add {
+      labelCollection: labelCollection
+      wordCollection: wordCollection
+      pairCollection: pairCollection
     }
-      
-    @gameList.push newGame
 
-  getLatestGame: ->
-    _.last @gameList
-  
-module.exports = GameData
+module.exports = GameCollection

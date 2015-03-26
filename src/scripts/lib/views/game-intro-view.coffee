@@ -4,28 +4,28 @@ Backbone.$ = $
 { renderable, div, form, input, text, ul, li, p, strong, span, a, raw } = require 'teacup'
 GamePlayView = require './game-play-view.coffee'
 
-template = renderable ->
+template = renderable (data) ->
   p 'Choose some labels…'
   ul ->
-    li 'camping'
-    li 'punk rock'
-    li 'internet cafe'
+    for l in data.labels
+      li l.name
   input class: 'js-start-game', type: 'button', value: 'Start'
 
 class GameIntroView extends Backbone.View
-  initialize: ({@gameData}) ->
-    @game = @gameData.getLatestGame()
-    super
-
   events:
     'click .js-start-game': 'startGame'
 
   render: ->
-    console.log @game
-    @$el.append template()
+    data = {
+      labels: @model.get('labelCollection').toJSON()
+    }
+
+    @$el.append template(data)
+
     @
 
   startGame: ->
+    
     @
 
 module.exports = GameIntroView
