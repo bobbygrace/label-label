@@ -1,12 +1,13 @@
 $ = require 'jquery'
 Backbone = require 'backbone'
 Backbone.$ = $
-{ renderable, div, form, input, text, ul, li, p, strong, span, a, raw, h2, h4 } = require 'teacup'
+{ renderable, div, form, h1, h2, h4, input, text, ul, li, p, strong, span, a, raw } = require 'teacup'
 AppView = require './app-view.coffee'
 NewGameView = require './new-game-view.coffee'
+Wordnik = require '../utils/wordnik.coffee'
 
-template = renderable (data) ->
-  p "GAME TIME"
+gamePlayTemplate = renderable (data) ->
+  h1 'Label Label'
   a '.js-new-game', href: "#", "Start a New Game"
   h2 '.js-fill-word'
   div '.definition.js-definition', ->
@@ -38,7 +39,6 @@ class GamePlayView extends Backbone.View
 
   initialize: ->
     pairs = @getPairCollection()
-    @wordnikApiKey = "a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5"
     @listenTo pairs, 'add', @fillWord
     @listenTo pairs, 'add', @fillPairs
 
@@ -55,7 +55,7 @@ class GamePlayView extends Backbone.View
     @getLatestPair()?.get('word')
 
   render: ->
-    @$el.append template()
+    @$el.append gamePlayTemplate()
     @fillLabels()
     @getNewWord()
     @
@@ -87,19 +87,11 @@ class GamePlayView extends Backbone.View
       word: word
 
   getNewWord: ->
-    url = "http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=-1&api_key=#{@wordnikApiKey}"
-
-    $.get url, (data) =>
-      @addWord data.word
+    Wordnik.getRandomWords { limit: 1 }, (data) =>
+      @addWord data[0].word
 
   getDefinition: ->
-    word = @getLatestWord()
-    url = "http://api.wordnik.com:80/v4/word.json/#{encodeURIComponent(word)}/definitions?limit=200&includeRelated=true&useCanonical=true&includeTags=false&api_key=#{@wordnikApiKey}"
-
-    $.get url, (data) =>
-      def = data[0]?.text
-      if !def
-        def = "No definition found."
+    Wordnik.getDefinition { word: @getLatestWord() }, (def) =>
       @showDefinition def
 
   showDefinition: (word) ->
