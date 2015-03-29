@@ -14,6 +14,16 @@ template = renderable (data) ->
       input '.js-label-value', value: "Punk Rock"
     li ->
       input '.js-label-value', value: "Internet Café"
+    li ->
+      input '.js-label-value'
+    li ->
+      input '.js-label-value'
+    li ->
+      input '.js-label-value'
+    li ->
+      input '.js-label-value'
+    li ->
+      input '.js-label-value'
   a href: "#",  class: 'js-start-game', "Start!"
 
 class SelectLabelsView extends Backbone.View

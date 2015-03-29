@@ -424,3 +424,7 @@ th {
   padding: 0;
 }
 
+body {
+  margin: 20px auto;
+  max-width: 900px;
+}
