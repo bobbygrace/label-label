@@ -428,3 +428,12 @@ body {
   margin: 20px auto;
   max-width: 900px;
 }
+.definition-text {
+  display: none;
+}
+.definition.is-shown .definition-show-button {
+  display: none;
+}
+.definition.is-shown .definition-text {
+  display: block;
+}
