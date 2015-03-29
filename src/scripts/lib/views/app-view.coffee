@@ -1,16 +1,25 @@
 $ = require 'jquery'
 Backbone = require 'backbone'
 Backbone.$ = $
+GameCollection = require '../collections/game-collection.coffee'
 
-class AppView extends Backbone.View
+module.exports = new class AppView
+
+  constructor: ->
+    @collection = new GameCollection()
+
+  startNewGame: ->
+    @collection.startGame()
+
+  getLatestGame: ->
+    @collection.last()
 
   showView: (view) ->
+
     if @currentView
       @currentView.remove()
 
     @currentView = view
-    @currentView.render()
+    el = @currentView.render().el
 
-    $('.js-app-view').html @currentView.el
-
-module.exports = AppView
+    $('.js-app-view').empty().append el

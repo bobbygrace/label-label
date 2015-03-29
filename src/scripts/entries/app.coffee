@@ -1,13 +1,7 @@
-Backbone = require 'backbone'
-AppRouter = require '../lib/routers/app-router.coffee'
 AppView = require '../lib/views/app-view.coffee'
-GameCollection = require '../lib/collections/game-collection.coffee'
+LandingView = require '../lib/views/landing-view.coffee'
 
-collection = new GameCollection()
+game = AppView.startNewGame()
+view = new LandingView({ model: game })
 
-options = {
-  appView: new AppView({ collection })
-}
-
-router = new AppRouter(options)
-Backbone.history.start({ pushState: true})
+AppView.showView view
