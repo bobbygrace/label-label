@@ -1,7 +1,7 @@
 $ = require 'jquery'
 
 module.exports = new class Wordnik
-  api_key: 'a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5'
+  api_key: '51a70731d2c802d5bea2788f7fa3d87d2afe982f98a6e241a'
 
   getRandomWords: (opts, callback) ->
     # opts expects a limit.
