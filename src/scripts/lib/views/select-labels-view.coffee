@@ -7,7 +7,8 @@ GamePlayView = require './game-play-view.coffee'
 
 template = renderable (data) ->
   p 'Choose some labels…'
-  ul ->
+
+  ul '.js-labels', ->
     li ->
       input '.js-label-value', value: "Camping"
     li ->
@@ -16,20 +17,21 @@ template = renderable (data) ->
       input '.js-label-value', value: "Internet Café"
     li ->
       input '.js-label-value'
-    li ->
-      input '.js-label-value'
-    li ->
-      input '.js-label-value'
-    li ->
-      input '.js-label-value'
-    li ->
-      input '.js-label-value'
-  a href: "#",  class: 'js-start-game', "Start!"
+
+  div ->
+    a '.button.js-start-game', href: "#", "Start!"
+
+newLabelTemplate = renderable ->
+  li ->
+    input '.js-label-value'
+
 
 class SelectLabelsView extends Backbone.View
   events:
     'submit .js-submit-label-form': 'startGame'
     'click .js-start-game': 'startGame'
+    'click .js-add-new-label': 'addNewLabel'
+    'keyup .js-label-value': 'keyupLabelEvent'
 
   render: ->
     data = @model.toJSON()
@@ -37,6 +39,20 @@ class SelectLabelsView extends Backbone.View
     @$el.append template(data)
 
     @
+
+  addNewLabel: ->
+    @$('.js-labels').append newLabelTemplate()
+
+  keyupLabelEvent: (e) ->
+    emptyInputs = []
+    @$('.js-label-value').each ->
+      if $(@).val() == ''
+        emptyInputs.push(@)
+      if emptyInputs.length > 1
+        $(@).remove()
+
+    if emptyInputs.length == 0
+      @addNewLabel()
 
   startGame: (e) ->
     e.preventDefault()

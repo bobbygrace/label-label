@@ -11,7 +11,6 @@ _.defer ->
 
 template = renderable (data) ->
   h1 'Label Label'
-  p 'Choose a Label!'
   div '.js-fill-labels'
 
 class NewGameView extends Backbone.View
