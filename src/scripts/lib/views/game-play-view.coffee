@@ -9,7 +9,7 @@ Wordnik = require '../utils/wordnik.coffee'
 gamePlayTemplate = renderable (data) ->
 
   div '.game-play-header', ->
-    p ->
+    p '.u-quiet', ->
       text 'You’re playing Label Label. '
       a '.js-new-game', href: "#", "Start a new game."
 
