@@ -430,6 +430,12 @@ th {
 .u-quiet a {
   color: #8c8c8c;
 }
+body,
+html,
+input,
+button {
+  font-family: "proxima-nova", sans-serif;
+}
 body {
   background-color: #f3f0f5;
   color: #333333;
