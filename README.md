@@ -1,4 +1,4 @@
-Label Label Party
+Label Party
 ====
 
 ## Usage

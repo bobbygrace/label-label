@@ -1,7 +1,7 @@
 {
   "name": "label-label-party",
   "version": "0.0.1",
-  "description": "Label Label is a game of labels.",
+  "description": "Label Party is a game of labels.",
   "scripts": {
     "gulp": "tools/gulp",
     "watch": "tools/watch",

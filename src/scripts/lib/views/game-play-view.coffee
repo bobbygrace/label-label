@@ -10,7 +10,7 @@ gamePlayTemplate = renderable (data) ->
 
   div '.game-play-header', ->
     p '.u-quiet', ->
-      text 'You’re playing Label Label. '
+      text 'You’re playing Label Party. '
       a '.js-new-game', href: "#", "Start a new game."
 
   div '.word-section', ->

@@ -10,7 +10,7 @@ _.defer ->
   SelectLabelsView = require './select-labels-view.coffee'
 
 template = renderable (data) ->
-  h1 'Label Label'
+  h1 'Label Party'
   div '.js-fill-labels'
 
 class NewGameView extends Backbone.View

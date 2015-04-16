@@ -16,12 +16,12 @@ template = renderable ->
   div '.landing-intro', ->
     p ->
       text 'This is '
-      strong 'Label Label'
+      strong 'Label Party'
       text ', a game where you label words.'
     p ->
       text 'You’ll get a random word courtesy of '
       a href: 'https://www.wordnik.com/', 'Wordnik'
-      text ' then you’ll give it a label. Label Label is best played in groups where you can debate and justify your answers.'
+      text ' then you’ll give it a label. Label Party is best played in groups where you can debate and justify your answers.'
 
   div '.js-game-view', 'Loading…'
 
