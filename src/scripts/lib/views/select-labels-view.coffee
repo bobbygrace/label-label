@@ -4,17 +4,16 @@ Backbone.$ = $
 { renderable, div, form, input, text, ul, li, p, strong, span, a, raw } = require 'teacup'
 AppView = require './app-view.coffee'
 GamePlayView = require './game-play-view.coffee'
+defaultLabels = require '../data/default-labels.coffee'
+_ = require 'underscore'
 
-template = renderable (data) ->
+template = renderable (data, labels) ->
   p 'Choose some labels…'
 
   ul '.js-labels', ->
-    li ->
-      input '.js-label-value', value: "Camping"
-    li ->
-      input '.js-label-value', value: "Punk Rock"
-    li ->
-      input '.js-label-value', value: "Internet Café"
+    for l in labels
+      li ->
+        input '.js-label-value', value: l
     li ->
       input '.js-label-value'
 
@@ -33,10 +32,15 @@ class SelectLabelsView extends Backbone.View
     'click .js-add-new-label': 'addNewLabel'
     'keyup .js-label-value': 'keyupLabelEvent'
 
+  getRandomLabels: ->
+    idx = _.random defaultLabels.length
+    defaultLabels[idx]
+
   render: ->
     data = @model.toJSON()
+    labels = @getRandomLabels()
 
-    @$el.append template(data)
+    @$el.append template(data, labels)
 
     @
 
