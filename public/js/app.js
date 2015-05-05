@@ -12782,7 +12782,7 @@ var Backbone,PairCollection,PairModel,extend=function(o,e){function r(){this.con
 
 
 },{"../models/pair-model.coffee":12,"backbone":1}],9:[function(require,module,exports){
-module.exports=[["Camping","Punk Rock","Internet Café"],["Slacklining","Rave in a Basement","Coffee Shop"],["Monday","Tuesday","Thursday"]];
+module.exports=[["Camping","Punk Rock","Internet Café"],["Slacklining","Rave in a Basement","Coffee Shop"],["Monday","Tuesday","Thursday"],["Normal Type","Fight Type","Flying Type","Poison Type","Ground Type","Rock Type","Bug Type","Ghost Type","Fire Type","Water Type","Grass Type","Electric Type","Psychic Type","Ice Type","Dragon Type"],["Plant","Animals","Archaebacteria","Eubacteria","Fungi","Protists"],["Is","Isn’t","Fake Is","Fake Isn’t"]];
 
 
 },{}],10:[function(require,module,exports){
