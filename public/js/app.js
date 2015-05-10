@@ -12782,7 +12782,7 @@ var Backbone,PairCollection,PairModel,extend=function(o,e){function r(){this.con
 
 
 },{"../models/pair-model.coffee":12,"backbone":1}],9:[function(require,module,exports){
-module.exports=[["Camping","Punk Rock","Internet Café"],["Slacklining","Rave in a Basement","Coffee Shop"],["Monday","Tuesday","Thursday"],["Normal Type","Fight Type","Flying Type","Poison Type","Ground Type","Rock Type","Bug Type","Ghost Type","Fire Type","Water Type","Grass Type","Electric Type","Psychic Type","Ice Type","Dragon Type"],["Plant","Animals","Archaebacteria","Eubacteria","Fungi","Protists"],["Is","Isn’t","Fake Is","Fake Isn’t"]];
+module.exports=[["Camping","Punk Rock","Internet Café"],["Slacklining","Rave in a Basement","Coffee Shop"],["Monday","Tuesday","Thursday"],["Normal Type","Fight Type","Flying Type","Poison Type","Ground Type","Rock Type","Bug Type","Ghost Type","Fire Type","Water Type","Grass Type","Electric Type","Psychic Type","Ice Type","Dragon Type"],["Is","Isn’t","Fake Is","Fake Isn’t"],["Win","Place","Show"],["Hogwarts","Hufflepuff","Ravenclaw","Slytherin"],["Eat In","Take Out","Delivery"],["Install","Try in an Hour","Try Tonight","Remind Me Tomorrow"]];
 
 
 },{}],10:[function(require,module,exports){
@@ -12798,7 +12798,7 @@ var Backbone,PairModel,extend=function(o,r){function e(){this.constructor=o}for(
 
 
 },{"backbone":1}],13:[function(require,module,exports){
-var $,Wordnik;$=require("jquery"),module.exports=new(Wordnik=function(){function n(){}return n.prototype.api_key="51a70731d2c802d5bea2788f7fa3d87d2afe982f98a6e241a",n.prototype.getRandomWords=function(n,t){var i,o;i=1,n.limit&&(i=n.limit),o="http://api.wordnik.com:80/v4/words.json/randomWords?hasDictionaryDef=true&minCorpusCount=0&excludePartOfSpeech=noun-plural,proper-noun-plural&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=-1&limit="+i+"&api_key="+this.api_key,$.get(o,function(){return function(n){return t(n)}}(this))},n.prototype.getDefinition=function(n,t){var i,o;o=n.word,o||t("No word given."),i="http://api.wordnik.com:80/v4/word.json/"+encodeURIComponent(o)+"/definitions?limit=200&includeRelated=true&useCanonical=true&includeTags=false&api_key="+this.api_key,$.get(i,function(){return function(n){var i,o;return i=null!=(o=n[0])?o.text:void 0,i||(i="No definition found."),t(i)}}(this))},n}());
+var $,Wordnik;$=require("jquery"),module.exports=new(Wordnik=function(){function n(){}return n.prototype.api_key="51a70731d2c802d5bea2788f7fa3d87d2afe982f98a6e241a",n.prototype.getRandomWords=function(n,e){var o,i,t,r;t=1,n.limit&&(t=n.limit),i="noun,adjective,verb",o="noun-plural,noun-posessive,proper-noun,proper-noun-plural,proper-noun-posessive,auxiliary-verb",r="http://api.wordnik.com:80/v4/words.json/randomWords?hasDictionaryDef=true&minCorpusCount=0&includePartOfSpeech="+i+"&excludePartOfSpeech="+o+"&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=-1&limit="+t+"&api_key="+this.api_key,$.get(r,function(){return function(n){return e(n)}}(this))},n.prototype.getDefinition=function(n,e){var o,i;i=n.word,i||e("No word given."),o="http://api.wordnik.com:80/v4/word.json/"+encodeURIComponent(i)+"/definitions?limit=200&includeRelated=true&useCanonical=true&includeTags=false&api_key="+this.api_key,$.get(o,function(){return function(n){var o,i;return o=null!=(i=n[0])?i.text:void 0,o||(o="No definition found."),e(o)}}(this))},n}());
 
 
 },{"jquery":2}],14:[function(require,module,exports){
