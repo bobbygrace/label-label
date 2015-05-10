@@ -32,17 +32,31 @@ module.exports = [
     "Dragon Type"
   ]
   [
-    "Plant"
-    "Animals"
-    "Archaebacteria"
-    "Eubacteria"
-    "Fungi"
-    "Protists"
-  ]
-  [
     "Is"
     "Isn’t"
     "Fake Is"
     "Fake Isn’t"
+  ]
+  [
+    "Win"
+    "Place"
+    "Show"
+  ]
+  [
+    "Hogwarts"
+    "Hufflepuff"
+    "Ravenclaw"
+    "Slytherin"
+  ]
+  [
+    "Eat In"
+    "Take Out"
+    "Delivery"
+  ]
+  [
+    "Install"
+    "Try in an Hour"
+    "Try Tonight"
+    "Remind Me Tomorrow"
   ]
 ]
