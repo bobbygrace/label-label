@@ -7,18 +7,24 @@ GamePlayView = require './game-play-view.coffee'
 defaultLabels = require '../data/default-labels.coffee'
 _ = require 'underscore'
 
-template = renderable (data, labels) ->
+template = renderable (data) ->
   p 'Choose some labels…'
 
-  ul '.js-labels', ->
-    for l in labels
-      li ->
-        input '.js-label-value', value: l
-    li ->
-      input '.js-label-value'
+  a '.js-get-new-labels', href: '#', ->
+    text 'Get different labels…'
+
+  ul '.js-label-list'
 
   div ->
     a '.button.js-start-game', href: "#", "Start!"
+
+templateLabels = renderable (labels) ->
+  for l in labels
+    li ->
+      input '.js-label-value', value: l
+  li ->
+    input '.js-label-value'
+
 
 newLabelTemplate = renderable ->
   li ->
@@ -27,10 +33,11 @@ newLabelTemplate = renderable ->
 
 class SelectLabelsView extends Backbone.View
   events:
-    'submit .js-submit-label-form': 'startGame'
-    'click .js-start-game': 'startGame'
+    'click .js-get-new-labels': 'newLabelsEvent'
     'click .js-add-new-label': 'addNewLabel'
     'keyup .js-label-value': 'keyupLabelEvent'
+    'submit .js-submit-label-form': 'startGame'
+    'click .js-start-game': 'startGame'
 
   getRandomLabels: ->
     idx = _.random defaultLabels.length
@@ -38,14 +45,22 @@ class SelectLabelsView extends Backbone.View
 
   render: ->
     data = @model.toJSON()
-    labels = @getRandomLabels()
-
-    @$el.append template(data, labels)
-
+    @$el.append template(data)
+    @renderLabels()
     @
 
+  renderLabels: ->
+    labels = @getRandomLabels()
+    @$('.js-label-list').empty().append templateLabels(labels)
+    @
+
+  newLabelsEvent: (e) ->
+    e.preventDefault()
+    @renderLabels()
+    false
+
   addNewLabel: ->
-    @$('.js-labels').append newLabelTemplate()
+    @$('.js-label-list').append newLabelTemplate()
 
   keyupLabelEvent: (e) ->
     emptyInputs = []
