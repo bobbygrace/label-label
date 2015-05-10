@@ -10,7 +10,10 @@ module.exports = new class Wordnik
     if opts.limit
       limit = opts.limit
 
-    url = "http://api.wordnik.com:80/v4/words.json/randomWords?hasDictionaryDef=true&minCorpusCount=0&excludePartOfSpeech=noun-plural,proper-noun-plural&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=-1&limit=#{limit}&api_key=#{@api_key}"
+    include = "noun,adjective,verb"
+    exclude = "noun-plural,noun-posessive,proper-noun,proper-noun-plural,proper-noun-posessive,auxiliary-verb"
+
+    url = "http://api.wordnik.com:80/v4/words.json/randomWords?hasDictionaryDef=true&minCorpusCount=0&includePartOfSpeech=#{include}&excludePartOfSpeech=#{exclude}&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=-1&limit=#{limit}&api_key=#{@api_key}"
 
     $.get url, (data) =>
       callback(data)
